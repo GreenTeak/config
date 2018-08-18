@@ -1,3 +1,5 @@
 services:
   todo-service:
-    host: 127.0.0.1
+    host: todo-service
+  user-service:
+    host: user-service

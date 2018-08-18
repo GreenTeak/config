@@ -5,17 +5,19 @@ services:
   user-service:
     host: user-service
     port: 8081
-
+  gateway:
+    host: gateway
+    port: 8080
 db:
   host: mysql
   port: 3306
   username: root
   password: password
   schema: ${db.name}
+
 todo-service:
   ribbon:
     listOfServers: ${services.todo-service.host}:${services.todo-service.port}
-
 user-service:
   ribbon:
     listOfServers: ${services.user-service.host}:${services.user-service.port}
