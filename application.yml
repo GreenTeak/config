@@ -22,16 +22,6 @@ user-service:
   ribbon:
     listOfServers: ${services.user-service.host}:${services.user-service.port}
 
-spring:
-  jpa:
-    hibernate:
-      ddl-auto: none
-  datasource:
-    url: jdbc:mysql://${db.host}:${db.port}/${db.schema}
-    username: ${db.username}
-    password: ${db.password}
-    driver-class-name: com.mysql.jdbc.Driver
-
 logging:
   level:
     org:
