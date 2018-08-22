@@ -3,3 +3,5 @@ services:
     host: todo-service
   user-service:
     host: user-service
+  gateway:
+    host: gateway

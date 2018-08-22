@@ -1,0 +1,45 @@
+server:
+  port: 8080
+
+ribbon:
+  eureka:
+    enabled: false
+
+user-service:
+  ribbon:
+    listOfServers: user-service:8081
+
+todo-service:
+  ribbon:
+    listOfServers: todo-service:8082
+
+zuul:
+  sensitiveHeaders: Cookie,Set-Cookie
+  #  ignoredServices: '*'
+  prefix: /api
+  debug:
+    request: true
+  routes:
+    user:
+      path: /users/**
+      serviceId: user-service
+      stripPrefix: false
+    login:
+      path: /login/**
+      serviceId: user-service
+      stripPrefix: false
+    verifications:
+      path: verifications/**
+      url: user-service
+      stripPrefix: false
+    todos:
+      path: /todos/**
+      url: todo-service
+      stripPrefix: false
+
+logging:
+  level:
+    org:
+      springframework:
+        cloud:
+          netflix: TRACE
